@@ -72,7 +72,7 @@ export const brand = {
   footerStatement: 'Data for decisions. AI systems for growth.',
   links: {
     about: '#about',
-    linkedin: 'https://www.linkedin.com/in/PLACEHOLDER',
+    linkedin: 'https://www.linkedin.com/in/donaldjordy',
     contact: 'mailto:jordykenfack@gmail.com',
   },
 };
