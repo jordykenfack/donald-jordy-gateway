@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background-color: #0a0a0b;
+  color: #f4f4f5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fine grain texture used subtly on both panels for editorial depth. */
+.noise-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Slow marquee for the dataset ticker on the data-science side. */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 26s linear infinite;
+}
+
+/* Gentle pulse on model nodes / workflow dots. */
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-node {
+  animation: node-pulse 3.2s ease-in-out infinite;
+}
+
+/* Dashed line draw for the AI workflow connectors. */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 6 8;
+  animation: dash-flow 30s linear infinite;
+}
+
+/* Touch / non-hover devices (e.g. tablets) get no hover event, so anything
+   that is only revealed on hover must be shown by default here. */
+@media (hover: none) {
+  .panel-desc {
+    opacity: 1 !important;
+  }
+}
+
+/* Layered-workspace depth: supporting interface fragments are subdued (blurred,
+   dimmed) until their panel is active, then sharpen. Desktop only — on
+   touch/stacked layouts the interfaces render crisp in their final state. */
+@media (min-width: 768px) {
+  .ds-cluster .frag-secondary,
+  .ai-cluster .frag-secondary {
+    transition: filter 0.5s ease, opacity 0.5s ease;
+  }
+  .ds-cluster[data-active='false'] .frag-secondary,
+  .ai-cluster[data-active='false'] .frag-secondary {
+    filter: blur(1.6px);
+    opacity: 0.72;
+  }
+  .ds-cluster[data-active='false'] .frag-dominant,
+  .ai-cluster[data-active='false'] .frag-dominant {
+    opacity: 0.92;
+  }
+}
+
+/* Stacked (mobile) layout: show only the dominant interface, centred and
+   legible — no supporting-card clutter, no depth parallax. */
+@media (max-width: 767px) {
+  .panel-backdrop {
+    opacity: 0.9 !important;
+  }
+  .ds-cluster,
+  .ai-cluster {
+    transform: scale(0.82) !important;
+  }
+  .ds-cluster .frag-secondary,
+  .ai-cluster .frag-secondary {
+    display: none;
+  }
+  .ds-cluster .frag-dominant,
+  .ai-cluster .frag-dominant {
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) rotateY(0deg) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
