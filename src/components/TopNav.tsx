@@ -1,24 +1,24 @@
 import { brand } from '../config/portfolios';
 
-// Minimal shared brand bar. Sits above the split without competing with it:
-// the two panels remain the dominant actions.
+// Minimal shared brand bar. Sits above the split without competing with it.
+// Green text so it reads on both the cream (left) and dark (right) panels.
 export default function TopNav() {
   const linkClass =
-    'text-[13px] font-medium tracking-wide text-white/70 transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/60';
+    'text-[13px] font-medium tracking-wide text-[#1a7f57]/80 transition-colors duration-200 hover:text-[#14603f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a7f57]';
 
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-30">
       <nav
         aria-label="Primary"
-        className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-10 md:py-6"
+        className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-6 py-5 md:px-10 md:py-6"
       >
         <a
           href="#"
-          className="pointer-events-auto font-display text-sm font-semibold uppercase tracking-[0.28em] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/60"
+          className="pointer-events-auto font-display text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1a7f57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a7f57] md:text-sm md:tracking-[0.28em]"
         >
           {brand.name}
         </a>
-        <div className="pointer-events-auto flex items-center gap-6 md:gap-8">
+        <div className="pointer-events-auto flex items-center gap-4 md:gap-8">
           <a href={brand.links.about} className={linkClass}>
             About
           </a>
