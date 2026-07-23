@@ -24,7 +24,7 @@ const Panel = forwardRef<HTMLAnchorElement, PanelProps>(function Panel(
   ref,
 ) {
   const isData = variant === 'dataScience';
-  const line = isData ? 'bg-[#1a1a18]/15' : 'bg-white/18';
+  const line = isData ? 'bg-[#1a1a18]/15' : 'bg-white/60';
   const eyebrow = isData ? 'text-[#1a1a18]/55' : 'text-white/50';
   const desc = isData ? 'text-[#1a1a18]/70' : 'text-white/65';
   const tag = isData

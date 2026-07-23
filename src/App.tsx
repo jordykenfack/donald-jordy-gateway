@@ -50,10 +50,13 @@ export default function App() {
       {/* Mobile intro — statement inside the green circle. */}
       <div className="flex justify-center bg-[#0c0c0d] px-6 pb-8 pt-24 md:hidden">
         <div
-          className="flex aspect-square w-[256px] flex-col items-center justify-center rounded-full px-9 text-center text-white shadow-[0_18px_50px_-12px_rgba(0,0,0,0.5)]"
+          className="flex aspect-square w-[236px] flex-col items-center justify-center rounded-full px-8 text-center text-white shadow-[0_18px_50px_-12px_rgba(0,0,0,0.5)]"
           style={{ backgroundColor: GREEN }}
         >
-          <p className="font-display text-[19px] font-semibold leading-[1.18]">{brand.primaryStatement}</p>
+          <p className="font-display text-[17px] font-semibold leading-[1.18]">{brand.primaryStatement}</p>
+          <p className="mt-2.5 max-w-[170px] font-display text-[9px] font-medium uppercase leading-[1.5] tracking-[0.16em] text-white/70">
+            {brand.footerStatement}
+          </p>
         </div>
       </div>
 
@@ -88,31 +91,19 @@ export default function App() {
           ref={centerRef}
           className="pointer-events-none absolute inset-0 z-20 hidden items-center justify-center md:flex"
         >
-          <div className="flex -translate-y-6 flex-col items-center">
-            <div
-              className="flex aspect-square w-[clamp(260px,25vw,352px)] flex-col items-center justify-center rounded-full px-10 text-center text-white shadow-[0_24px_70px_-18px_rgba(0,0,0,0.55)] ring-1 ring-white/10"
-              style={{ backgroundColor: GREEN }}
-            >
-              <h1 className="font-display text-[clamp(1.7rem,2.1vw,2.05rem)] font-semibold leading-[1.14]">
-                {brand.primaryStatement}
-              </h1>
-            </div>
-            <p
-              className="mt-6 font-display text-[12px] font-medium uppercase tracking-[0.28em]"
-              style={{ color: GREEN }}
-            >
+          <div
+            className="flex aspect-square w-[clamp(238px,22vw,320px)] -translate-y-4 flex-col items-center justify-center rounded-full px-9 text-center text-white shadow-[0_24px_70px_-18px_rgba(0,0,0,0.55)] ring-1 ring-white/10"
+            style={{ backgroundColor: GREEN }}
+          >
+            <h1 className="font-display text-[clamp(1.5rem,1.85vw,1.8rem)] font-semibold leading-[1.14]">
+              {brand.primaryStatement}
+            </h1>
+            <p className="mt-3 max-w-[190px] font-display text-[10px] font-medium uppercase leading-[1.5] tracking-[0.18em] text-white/70">
               {brand.footerStatement}
             </p>
           </div>
         </div>
       </div>
-
-      {/* Mobile footer statement */}
-      <footer className="bg-[#0c0c0d] px-6 py-8 text-center md:hidden">
-        <p className="font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: GREEN }}>
-          {brand.footerStatement}
-        </p>
-      </footer>
     </div>
   );
 }
