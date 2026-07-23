@@ -4,7 +4,7 @@ import { brand } from '../config/portfolios';
 // Green text so it reads on both the cream (left) and dark (right) panels.
 export default function TopNav() {
   const linkClass =
-    'text-[13px] font-medium tracking-wide text-[#1a7f57]/80 transition-colors duration-200 hover:text-[#14603f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a7f57]';
+    'text-[15px] font-medium tracking-tight text-[#1a7f57]/85 transition-colors duration-200 hover:text-[#14603f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a7f57]';
 
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-30">

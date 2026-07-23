@@ -33,7 +33,8 @@ export default function App() {
     // retargets cleanly instead of stacking conflicting tweens.
     gsap.to(active, { flexGrow: 1.7, duration: 0.7, ease: 'power3.out', overwrite: 'auto' });
     gsap.to(other, { flexGrow: 1, duration: 0.7, ease: 'power3.out', overwrite: 'auto' });
-    gsap.to(centerRef.current, { scale: 0.94, opacity: 0.55, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
+    // circle eases back and turns a little more transparent while a path is active
+    gsap.to(centerRef.current, { scale: 0.97, opacity: 0.68, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
   };
 
   const reset = () => {
@@ -49,11 +50,10 @@ export default function App() {
       {/* Mobile intro — statement inside the green circle. */}
       <div className="flex justify-center bg-[#0c0c0d] px-6 pb-8 pt-24 md:hidden">
         <div
-          className="flex aspect-square w-[248px] flex-col items-center justify-center rounded-full px-9 text-center text-white shadow-[0_18px_50px_-12px_rgba(0,0,0,0.5)]"
+          className="flex aspect-square w-[256px] flex-col items-center justify-center rounded-full px-9 text-center text-white shadow-[0_18px_50px_-12px_rgba(0,0,0,0.5)]"
           style={{ backgroundColor: GREEN }}
         >
-          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/70">{brand.name}</span>
-          <p className="mt-2.5 font-display text-[15px] font-semibold leading-[1.15]">{brand.primaryStatement}</p>
+          <p className="font-display text-[19px] font-semibold leading-[1.18]">{brand.primaryStatement}</p>
         </div>
       </div>
 
@@ -82,30 +82,29 @@ export default function App() {
           onBlur={reset}
         />
 
-        {/* Desktop centre — green circle over the seam. pointer-events-none so
-            both panels stay directly hoverable/clickable underneath. */}
+        {/* Desktop centre — green circle over the seam, with the footer line
+            beneath it. pointer-events-none so both panels stay hoverable. */}
         <div
           ref={centerRef}
           className="pointer-events-none absolute inset-0 z-20 hidden items-center justify-center md:flex"
         >
-          <div
-            className="flex aspect-square w-[clamp(230px,23vw,318px)] -translate-y-10 flex-col items-center justify-center rounded-full px-10 text-center text-white shadow-[0_24px_70px_-18px_rgba(0,0,0,0.55)] ring-1 ring-white/10"
-            style={{ backgroundColor: GREEN }}
-          >
-            <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-white/70">{brand.name}</span>
-            <h1 className="mt-3 font-display text-[clamp(1.15rem,1.7vw,1.55rem)] font-semibold leading-[1.12]">
-              {brand.primaryStatement}
-            </h1>
+          <div className="flex -translate-y-6 flex-col items-center">
+            <div
+              className="flex aspect-square w-[clamp(260px,25vw,352px)] flex-col items-center justify-center rounded-full px-10 text-center text-white shadow-[0_24px_70px_-18px_rgba(0,0,0,0.55)] ring-1 ring-white/10"
+              style={{ backgroundColor: GREEN }}
+            >
+              <h1 className="font-display text-[clamp(1.7rem,2.1vw,2.05rem)] font-semibold leading-[1.14]">
+                {brand.primaryStatement}
+              </h1>
+            </div>
+            <p
+              className="mt-6 font-display text-[12px] font-medium uppercase tracking-[0.28em]"
+              style={{ color: GREEN }}
+            >
+              {brand.footerStatement}
+            </p>
           </div>
         </div>
-
-        {/* Desktop footer statement */}
-        <p
-          className="pointer-events-none absolute inset-x-0 bottom-5 z-20 hidden text-center font-mono text-[11px] font-medium uppercase tracking-[0.3em] md:block"
-          style={{ color: GREEN }}
-        >
-          {brand.footerStatement}
-        </p>
       </div>
 
       {/* Mobile footer statement */}

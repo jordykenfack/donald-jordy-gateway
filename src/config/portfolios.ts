@@ -21,7 +21,9 @@ export interface PortfolioPath {
   label: string;
   /** main title shown on the panel */
   title: string;
-  /** one-line supporting description */
+  /** three short capability tags */
+  tags: string[];
+  /** concise two-line description */
   description: string;
   /** CTA text */
   cta: string;
@@ -42,16 +44,18 @@ export const portfolioPaths: Record<PortfolioKey, PortfolioPath> = {
   dataScience: {
     label: 'Professional Career',
     title: 'Data Scientist',
+    tags: ['Python', 'SQL', 'Machine Learning'],
     description:
-      'Transforming complex data into models, insights, and better decisions.',
+      'Transforming complex data into reliable insights, predictive models, and better decisions.',
     cta: 'Explore Data Science',
     url: urls.data,
   },
   aiStudio: {
     label: 'Freelance & Consulting',
     title: 'AI Solutions Builder',
+    tags: ['AI Websites', 'Digital Hubs', 'Automation'],
     description:
-      'Building AI-powered websites, digital hubs, and automated business systems.',
+      'Building conversion-focused websites and connected AI systems for modern businesses.',
     cta: 'Explore AI Studio',
     url: urls.ai,
   },
